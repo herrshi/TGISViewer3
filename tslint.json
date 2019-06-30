@@ -15,6 +15,7 @@
     "object-literal-sort-keys": false,
     "one-line": [false],
     "trailing-comma": [false],
-    "no-implicit-dependencies": false
+    "no-implicit-dependencies": false,
+    "no-console": false
   }
 }

@@ -51,14 +51,14 @@ class AppViewModel extends declared(Accessor) {
     });
     this.view.ui.add(demo, "bottom-left");
 
-    const bookmarks = new Bookmarks({
-      view: this.view
-    });
-    this.view.ui.add(bookmarks, "bottom-right");
-
+    // const bookmarks = new Bookmarks({
+    //   view: this.view
+    // });
+    // this.view.ui.add(bookmarks, "bottom-right");
 
     this.featureLayer.when(() => {
-      this.view.goTo({ target: this.featureLayer.fullExtent });
+      console.log(this.featureLayer.fullExtent.center);
+      this.view.goTo({ target: this.featureLayer.fullExtent.center });
     });
   }
 }
