@@ -7,6 +7,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 const WorkboxPlugin = require("workbox-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const path = require("path");
 
@@ -16,8 +17,9 @@ module.exports = function(_, arg) {
       index: ["./src/css/main.scss", "./src/index.ts"]
     },
     output: {
-      filename: "[name].[chunkhash].js",
-      publicPath: ""
+      filename: "[name].bundle.js",
+      path: path.resolve(__dirname, "web-gis"),
+      publicPath: "/web-gis/"
     },
     optimization: {
       minimizer: [
@@ -117,9 +119,19 @@ module.exports = function(_, arg) {
             sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
           }
         ]
-      })
+      }),
+
+      new CopyWebpackPlugin([
+        {
+          from: "./static",
+          to: "./static"
+        }
+      ])
     ],
     resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src/")
+      },
       modules: [
         path.resolve(__dirname, "/src"),
         path.resolve(__dirname, "node_modules/")

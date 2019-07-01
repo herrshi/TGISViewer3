@@ -23,7 +23,18 @@
 </head>
 <body>
   <noscript> JavaScript is required in order to use this app </noscript>
-  <div id="app"></div>
+  <div id="mapDiv"></div>
+
+  <script type="text/javascript" src="index.bundle.js"></script>
+  <script>
+    console.time("create TGIS map");
+    TGISMap.createMap({
+      configUrl: "static/config/config.json",
+      container: "mapDiv"
+    }).then(() => {
+      console.timeEnd("create TGIS map");
+    });
+  </script>
 </body>
 </html>
 

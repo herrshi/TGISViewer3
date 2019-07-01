@@ -5,7 +5,7 @@ import EsriMap from "esri/Map";
 import SceneView from "esri/views/SceneView";
 import Expand from "esri/widgets/Expand";
 import Search from "esri/widgets/Search";
-import Bookmarks from "../../widgets/Bookmarks";
+// import Bookmarks from "../../widgets/Bookmarks";
 import Demo from "../../widgets/Demo";
 
 import {
@@ -51,13 +51,7 @@ class AppViewModel extends declared(Accessor) {
     });
     this.view.ui.add(demo, "bottom-left");
 
-    // const bookmarks = new Bookmarks({
-    //   view: this.view
-    // });
-    // this.view.ui.add(bookmarks, "bottom-right");
-
     this.featureLayer.when(() => {
-      console.log(this.featureLayer.fullExtent.center);
       this.view.goTo({ target: this.featureLayer.fullExtent.center });
     });
   }

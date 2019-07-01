@@ -15,3 +15,4 @@ coverage-final.*
 firebase.json
 firebase-debug.log
 .idea/*
+web-gis/*

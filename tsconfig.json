@@ -16,13 +16,16 @@
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
     "strictNullChecks": true,
-
     "outDir": "./dist/",
     "sourceMap": true,
     "noEmitOnError": false,
     "noUnusedLocals": true,
     "importHelpers": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "types": [
     "arcgis-js-api",
