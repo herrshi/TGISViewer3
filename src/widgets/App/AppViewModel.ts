@@ -1,5 +1,5 @@
 import Accessor from "esri/core/Accessor";
-import { whenOnce } from "esri/core/watchUtils";
+import { whenTrueOnce } from "esri/core/watchUtils";
 import FeatureLayer from "esri/layers/FeatureLayer";
 import EsriMap from "esri/Map";
 import SceneView from "esri/views/SceneView";
@@ -33,7 +33,7 @@ class AppViewModel extends declared(Accessor) {
 
   constructor(params?: Partial<AppParams>) {
     super(params);
-    whenOnce(this, "view").then(() => this.onload());
+    whenTrueOnce(this, "view.ready").then(() => this.onload());
   }
 
   onload() {

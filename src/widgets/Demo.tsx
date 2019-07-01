@@ -4,8 +4,8 @@ import {
   property,
   subclass
 } from "esri/core/accessorSupport/decorators";
-import { renderable, tsx } from "esri/widgets/support/widget";
 import SceneView from "esri/views/SceneView";
+import { renderable, tsx } from "esri/widgets/support/widget";
 
 import Widget from "esri/widgets/Widget";
 
@@ -17,7 +17,6 @@ const CSS = {
 
 @subclass("app.widgets.Demo")
 export default class Demo extends declared(Widget) {
-
   @aliasOf("viewModel.name")
   @renderable()
   name = "";
@@ -39,12 +38,9 @@ export default class Demo extends declared(Widget) {
   render() {
     return (
       <div class={CSS.base}>
-        <p>
-          Welcome {this.name}!
-        </p>
-        <p>heading: {this.view.camera ? this.view.camera.heading : ""}</p>
+        <p>Welcome {this.name}!</p>
+        <p>heading: {this.view.camera.heading}</p>
       </div>
     );
   }
-
 }
