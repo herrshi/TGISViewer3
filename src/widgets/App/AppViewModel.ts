@@ -1,12 +1,10 @@
 import Accessor from "esri/core/Accessor";
 import { whenTrueOnce } from "esri/core/watchUtils";
-import FeatureLayer from "esri/layers/FeatureLayer";
 import EsriMap from "esri/Map";
 import SceneView from "esri/views/SceneView";
 import Expand from "esri/widgets/Expand";
 import Search from "esri/widgets/Search";
-// import Bookmarks from "../../widgets/Bookmarks";
-import Demo from "../../widgets/Demo";
+import Demo from "@/widgets/Demo";
 
 import {
   declared,
@@ -17,7 +15,6 @@ import {
 export interface AppParams {
   appName: string;
   map: EsriMap;
-  featureLayer: FeatureLayer;
   view: SceneView;
 }
 
@@ -27,33 +24,25 @@ class AppViewModel extends declared(Accessor) {
 
   @property() map: EsriMap;
 
-  @property() featureLayer: FeatureLayer;
-
   @property() view: SceneView;
 
   constructor(params?: Partial<AppParams>) {
     super(params);
-    whenTrueOnce(this, "view.ready").then(() => this.onload());
+    whenTrueOnce(this, "view.ready").then(() => this._onViewReady());
   }
 
-  onload() {
-    const search = new Search({ view: this.view });
+  private _onViewReady() {
+    const { view } = this;
+    view.ui.remove("attribution");
+
+    const search = new Search({ view });
     const expand = new Expand({
       content: search
     });
-    this.view.ui.add(expand, "top-right");
-    this.view.ui.remove("attribution");
+    view.ui.add(expand, "top-right");
 
-    // console.log(this.view.camera.heading);
-    const demo = new Demo({
-      name: "herrshi",
-      view: this.view
-    });
-    this.view.ui.add(demo, "bottom-left");
-
-    this.featureLayer.when(() => {
-      this.view.goTo({ target: this.featureLayer.fullExtent.center });
-    });
+    const demo = new Demo({ view });
+    view.ui.add(demo, "bottom-left");
   }
 }
 

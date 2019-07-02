@@ -3,19 +3,20 @@
     "apiUrl": "http://localhost:8090/arcgis_js_api_4/",
     "appUrl": "http://localhost:8090/web-gis/"
   },
+  "viewOptions": {
+    "viewingMode": "local",
+    "camera": {
+      "position": { "x": 116.433877, "y": 39.569704, "z": 13000 },
+      "tilt": 45,
+      "heading": 0
+    }
+  },
   "map": {
     "basemaps": [
       {
         "label": "",
         "url": "https://map.geoq.cn/arcgis/rest/services/ChinaOnlineCommunity/MapServer"
       }
-    ],
-    "options": {
-      "camera": {
-        "position": { "x": 116.433877, "y": 39.569704, "z": 13000 },
-        "tilt": 45,
-        "heading": 0
-      }
-    }
+    ]
   }
 }

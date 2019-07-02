@@ -16,6 +16,7 @@
     "one-line": [false],
     "trailing-comma": [false],
     "no-implicit-dependencies": false,
-    "no-console": false
+    "no-console": false,
+    "no-this-assignment": false
   }
 }

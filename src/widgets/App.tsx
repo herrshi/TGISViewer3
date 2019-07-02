@@ -1,4 +1,5 @@
 import esri = __esri;
+import AppConfig from "@/AppConfig";
 
 import {
   aliasOf,
@@ -6,16 +7,14 @@ import {
   property,
   subclass
 } from "esri/core/accessorSupport/decorators";
-import { tsx } from "esri/widgets/support/widget";
 
 import FeatureLayer from "esri/layers/FeatureLayer";
 import EsriMap from "esri/Map";
 import SceneView from "esri/views/SceneView";
+import { tsx } from "esri/widgets/support/widget";
 import Widget from "esri/widgets/Widget";
 
 import AppViewModel, { AppParams } from "./App/AppViewModel";
-
-import { Header } from "./Header";
 
 interface AppViewParams extends AppParams, esri.WidgetProperties {}
 
@@ -43,19 +42,18 @@ export default class App extends declared(Widget) {
   render() {
     return (
       <div class={CSS.base}>
-        {Header({ appName: this.appName })}
         <div class={CSS.webmap} bind={this} afterCreate={this.onAfterCreate} />
       </div>
     );
   }
 
   private onAfterCreate(element: HTMLDivElement) {
-    import("./../data/app").then(({ featureLayer, map }) => {
-      this.featureLayer = featureLayer;
-      this.map = map;
+    const appConfig = AppConfig.appConfig;
+    import("@/data/app").then(({ map }) => {
       this.view = new SceneView({
-        map: this.map,
-        container: element
+        map,
+        container: element,
+        ...appConfig.viewOptions
       });
     });
   }

@@ -36,7 +36,7 @@ suite("widgets/App/AppViewModel", () => {
     const whereStub = stub(featureLayer, "when");
 
     const app = new AppViewModel({ appName: NAME, featureLayer, map, view });
-    app.onload();
+    app.onViewReady();
     assert.isTrue(whereStub.called);
     whereStub.restore();
   });
