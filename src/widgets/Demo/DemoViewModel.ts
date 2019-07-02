@@ -49,7 +49,7 @@ export default class DemoViewModel extends declared(Accessor) {
   //
   // --------------------------------------------------------------------------
   private _handles: Handles = new Handles();
-  private _initcCamera;
+  // private _initcCamera;
 
   // --------------------------------------------------------------------------
   //
@@ -63,10 +63,11 @@ export default class DemoViewModel extends declared(Accessor) {
 
   initialize() {
     watchUtils.when(this, "view", () => {
-      this._initcCamera = this.view.camera;
-      this._handles.add(this.view.watch("center, interacting, scale", () =>
-        this._onViewChanged()
-      ));
+      this._handles.add(
+        watchUtils.init(this.view, "center, interacting, scale", () =>
+          this._onViewChanged()
+        )
+      );
       this._onViewChanged();
     });
   }
