@@ -6,7 +6,7 @@
   "viewOptions": {
     "viewingMode": "local",
     "camera": {
-      "position": { "x": 116.433877, "y": 39.569704, "z": 13000 },
+      "position": { "x": 121.406810, "y": 31.135056, "z": 13000 },
       "tilt": 45,
       "heading": 0
     }
@@ -14,8 +14,8 @@
   "map": {
     "basemaps": [
       {
-        "label": "",
-        "url": "https://map.geoq.cn/arcgis/rest/services/ChinaOnlineCommunity/MapServer"
+        "label": "蓝黑",
+        "url": "https://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer"
       }
     ]
   }

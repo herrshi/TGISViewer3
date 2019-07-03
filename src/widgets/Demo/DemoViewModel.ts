@@ -19,7 +19,9 @@ interface Center {
 
 interface State extends Center {
   interacting: boolean;
-  scale: number;
+  z: number;
+  tilt: number;
+  heading: number;
 }
 
 @subclass("app.widgets.Demo.DemoViewModel")
@@ -49,7 +51,6 @@ export default class DemoViewModel extends declared(Accessor) {
   //
   // --------------------------------------------------------------------------
   private _handles: Handles = new Handles();
-  // private _initcCamera;
 
   // --------------------------------------------------------------------------
   //
@@ -82,16 +83,19 @@ export default class DemoViewModel extends declared(Accessor) {
   //
   // --------------------------------------------------------------------------
   private _onViewChanged() {
-    const { interacting, scale } = this.view;
-    let { center } = this.view;
+    const { interacting, camera } = this.view;
+    // let { camera } = this.view;
+    let {position} = camera;
     if (this.view.spatialReference.isWebMercator) {
-      center = webMercatorUtils.webMercatorToGeographic(center) as Point;
+      position = webMercatorUtils.webMercatorToGeographic(position) as Point;
     }
     this.state = {
-      x: center.x,
-      y: center.y,
+      x: position.x,
+      y: position.y,
       interacting,
-      scale
+      z: position.z,
+      tilt: camera.tilt,
+      heading: camera.heading
     };
   }
 }

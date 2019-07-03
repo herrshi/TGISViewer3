@@ -1,16 +1,11 @@
+import Demo from "@/widgets/Demo";
+import RoadDamageDemo from "@/widgets/RoadDamageDemo";
 import Accessor from "esri/core/Accessor";
-import { whenTrueOnce } from "esri/core/watchUtils";
+
+import {declared, property, subclass} from "esri/core/accessorSupport/decorators";
+import {whenTrueOnce} from "esri/core/watchUtils";
 import EsriMap from "esri/Map";
 import SceneView from "esri/views/SceneView";
-import Expand from "esri/widgets/Expand";
-import Search from "esri/widgets/Search";
-import Demo from "@/widgets/Demo";
-
-import {
-  declared,
-  property,
-  subclass
-} from "esri/core/accessorSupport/decorators";
 
 export interface AppParams {
   appName: string;
@@ -35,14 +30,11 @@ class AppViewModel extends declared(Accessor) {
     const { view } = this;
     view.ui.remove("attribution");
 
-    const search = new Search({ view });
-    const expand = new Expand({
-      content: search
-    });
-    view.ui.add(expand, "top-right");
-
     const demo = new Demo({ view });
     view.ui.add(demo, "bottom-left");
+
+    const roadDamage = new RoadDamageDemo({view});
+    view.ui.add(roadDamage, "top-right");
   }
 }
 
