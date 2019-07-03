@@ -1,15 +1,8 @@
 {
-  "extends": [
-    "tslint:latest",
-    "tslint-eslint-rules",
-    "tslint-config-prettier"
-  ],
+  "extends": ["tslint:latest", "tslint-eslint-rules", "tslint-config-prettier"],
   "rules": {
     "interface-name": [false],
-    "member-access": [
-      true,
-      "no-public"
-    ],
+    "member-access": [true, "no-public"],
     "no-empty": false,
     "no-submodule-imports": false,
     "object-literal-sort-keys": false,
@@ -17,6 +10,9 @@
     "trailing-comma": [false],
     "no-implicit-dependencies": false,
     "no-console": false,
-    "no-this-assignment": false
+    "no-this-assignment": false,
+    "variable-name": {
+      "options": ["allow-leading-underscore"]
+    }
   }
 }
