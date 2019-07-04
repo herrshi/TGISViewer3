@@ -145,42 +145,46 @@ module.exports = function(_, arg) {
     }
   };
 
-  if (arg.mode === "production") {
-    config.plugins.push(
-      new WorkboxPlugin.GenerateSW({
-        // Exclude images from the precache
-        exclude: [/\.(?:png|jpg|jpeg|svg|gif)$/],
-
-        // Define runtime caching rules.
-        runtimeCaching: [
-          {
-            // Match any request ends with .png, .jpg, .jpeg or .svg.
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
-            // Apply a cache-first strategy.
-            handler: "cacheFirst"
-          },
-          {
-            // Match any fonts
-            urlPattern: /\.(?:eot|ttf|jpeg|woff|woff2)$/,
-            // Apply a cache-first strategy.
-            handler: "cacheFirst"
-          },
-          {
-            urlPattern: new RegExp("https://js.arcgis.com"),
-            handler: "staleWhileRevalidate"
-          },
-          {
-            urlPattern: new RegExp("https://basemaps.arcgis.com"),
-            handler: "staleWhileRevalidate"
-          },
-          {
-            urlPattern: new RegExp("https://arcgis.com/sharing"),
-            handler: "staleWhileRevalidate"
-          }
-        ]
-      })
-    );
-  }
+  // if (arg.mode === "production") {
+  //   config.plugins.push(
+  //     new WorkboxPlugin.GenerateSW({
+  //       // Exclude images from the precache
+  //       exclude: [/\.(?:png|jpg|jpeg|svg|gif)$/],
+  //
+  //       // Define runtime caching rules.
+  //       runtimeCaching: [
+  //         {
+  //           // Match any request ends with .png, .jpg, .jpeg or .svg.
+  //           urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
+  //           // Apply a cache-first strategy.
+  //           handler: "cacheFirst"
+  //         },
+  //         {
+  //           // Match any fonts
+  //           urlPattern: /\.(?:eot|ttf|jpeg|woff|woff2)$/,
+  //           // Apply a cache-first strategy.
+  //           handler: "cacheFirst"
+  //         },
+  //         {
+  //           urlPattern: new RegExp("https://js.arcgis.com"),
+  //           handler: "staleWhileRevalidate"
+  //         },
+  //         {
+  //           urlPattern: new RegExp("https://basemaps.arcgis.com"),
+  //           handler: "staleWhileRevalidate"
+  //         },
+  //         {
+  //           urlPattern: new RegExp("https://arcgis.com/sharing"),
+  //           handler: "staleWhileRevalidate"
+  //         },
+  //         {
+  //           urlPattern: new RegExp("https://map.geoq.cn"),
+  //           handler: "staleWhileRevalidate"
+  //         }
+  //       ]
+  //     })
+  //   );
+  // }
 
   return config;
 };

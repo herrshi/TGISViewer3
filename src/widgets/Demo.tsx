@@ -51,12 +51,13 @@ export default class Demo extends declared(Widget) {
   // -------------------------------------------------------------------
 
   render() {
-    const { x, y, z, heading, tilt } = this.viewModel.state;
+    const { x, y, z, scale, heading, tilt } = this.viewModel.state;
     return (
       <div bind={this} class={CSS.base}>
         <p>x: {Number(x).toFixed(6)}</p>
         <p>y: {Number(y).toFixed(6)}</p>
         <p>z: {Number(z).toFixed(6)}</p>
+        <p>scale: {Number(scale).toFixed(6)}</p>
         <p>heading: {Number(heading).toFixed(6)}</p>
         <p>tilt: {Number(tilt).toFixed(6)}</p>
       </div>

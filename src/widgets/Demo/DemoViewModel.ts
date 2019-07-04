@@ -22,6 +22,7 @@ interface State extends Center {
   z: number;
   tilt: number;
   heading: number;
+  scale: number;
 }
 
 @subclass("app.widgets.Demo.DemoViewModel")
@@ -83,7 +84,7 @@ export default class DemoViewModel extends declared(Accessor) {
   //
   // --------------------------------------------------------------------------
   private _onViewChanged() {
-    const { interacting, camera } = this.view;
+    const { interacting, camera, scale } = this.view;
     // let { camera } = this.view;
     let {position} = camera;
     if (this.view.spatialReference.isWebMercator) {
@@ -92,10 +93,11 @@ export default class DemoViewModel extends declared(Accessor) {
     this.state = {
       x: position.x,
       y: position.y,
-      interacting,
       z: position.z,
+      interacting,
       tilt: camera.tilt,
-      heading: camera.heading
+      heading: camera.heading,
+      scale
     };
   }
 }
