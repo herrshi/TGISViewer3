@@ -40,7 +40,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "serve": "webpack-dev-server --mode production --open --https --compress",
     "prettier": "prettier --write \"src/**/*.ts?(x)\"",
     "lint": "tslint --fix \"src/**/*.ts?(x)\"",

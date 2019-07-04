@@ -4,9 +4,9 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+// const TerserPlugin = require("terser-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
-const WorkboxPlugin = require("workbox-webpack-plugin");
+// const WorkboxPlugin = require("workbox-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const path = require("path");
@@ -23,16 +23,16 @@ module.exports = function(_, arg) {
     },
     optimization: {
       minimizer: [
-        new TerserPlugin({
-          cache: true,
-          parallel: true,
-          sourceMap: false,
-          terserOptions: {
-            output: {
-              comments: false
-            }
-          }
-        }),
+        //   new TerserPlugin({
+        //     cache: true,
+        //     parallel: true,
+        //     sourceMap: false,
+        //     terserOptions: {
+        //       output: {
+        //         comments: false
+        //       }
+        //     }
+        //   }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
             discardComments: {
